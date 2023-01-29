@@ -8,13 +8,13 @@ class AddThread{
     }
 
     _verifyPayload(payload){
-        const { title, body, owner } = payload;
+        const { title, body} = payload;
 
-        if(!title || !body || !owner){
+        if(!title || !body ){
             throw new Error('NEW_THREAD.NOT_CONTAIN_NEEDED_PROPERTY');
         }
 
-        if(typeof title !== 'string' || typeof body !== 'string' || typeof owner !== 'string'){
+        if(typeof title !== 'string' || typeof body !== 'string'){
             throw new Error('NEW_THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION');
         }
     }

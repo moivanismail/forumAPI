@@ -4,8 +4,8 @@ const pool = require('../src/Infrastructures/database/postgres/pool');
 const ThreadsTableHelper = {
     async addThread({
         id = 'thread-123',
-        title = 'sebuah thread',
-        body = 'ini isi thread',
+        title = 'judul',
+        body = 'body',
         owner = 'user-123',
         created_at = new Date().toISOString(),
     }) {

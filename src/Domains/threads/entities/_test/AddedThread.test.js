@@ -4,8 +4,7 @@ describe('a AddedThread entities', () => {
     it('should throw error when payload did not contain needed property', () => {
         // Arrange
         const payload = {
-        id: 'thread-123',
-        title: 'sebuah thread',
+        title: 'judul',
         };
 
         // Action and Assert
@@ -15,10 +14,9 @@ describe('a AddedThread entities', () => {
     it('should throw error when payload did not meet data type specification', () => {
         // Arrange
         const payload = {
-        id: 123,
-        title: 123,
-        body: 123,
-        owner: 123,
+            id: 123,
+            title: 123,
+            owner: 123,
         };
 
         // Action and Assert
@@ -29,8 +27,7 @@ describe('a AddedThread entities', () => {
         // Arrange
         const payload = {
         id: 'thread-123',
-        title: 'sebuah thread',
-        body: 'ini isi thread',
+        title: 'judul',
         owner: 'user-123',
         };
 
@@ -41,7 +38,6 @@ describe('a AddedThread entities', () => {
         expect(addedThread).toBeInstanceOf(AddedThread);
         expect(addedThread.id).toEqual(payload.id);
         expect(addedThread.title).toEqual(payload.title);
-        expect(addedThread.body).toEqual(payload.body);
         expect(addedThread.owner).toEqual(payload.owner);
     });
 });
