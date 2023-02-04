@@ -5,19 +5,20 @@ class AddThreadUseCase {
         this._threadRepository = threadRepository;
     }
 
-    async execute(useCasePayload) {
-        this._verifyOwnerId(useCasePayload);
+    async execute(useCasePayload, owner) {
+        this._verifyOwnerId(owner);
+        console.log('AddThreadUseCase owner: ' + owner);
         const addThread = new AddThread(useCasePayload);
 
-        return this._threadRepository.addThread(addThread);
+        return this._threadRepository.addThread(addThread, owner);
     }
 
-    _verifyOwnerId(useCasePayload) {
-        if (!useCasePayload.owner) {
+    _verifyOwnerId(owner) {
+        if (!owner) {
             throw new Error('ADD_THREAD_USE_CASE.NOT_CONTAIN_OWNER_ID');
         }
 
-        if (typeof useCasePayload.owner !== 'string') {
+        if (typeof owner !== 'string') {
             throw new Error('ADD_THREAD_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION');
         }
     }

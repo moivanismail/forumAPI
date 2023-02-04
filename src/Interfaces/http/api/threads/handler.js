@@ -6,6 +6,7 @@ class ThreadsHandler {
     this._container = container;
 
     this.postThreadHandler = this.postThreadHandler.bind(this);
+    this.getThreadsByIdHandler = this.getThreadsByIdHandler.bind(this);
   }
 
   async postThreadHandler(request, h) {
@@ -14,10 +15,8 @@ class ThreadsHandler {
     const useCasePayload = {
       title: request.payload.title,
       body: request.payload.body,
-      owner,
     };
-
-    const addedThread = await addThreadUseCase.execute(useCasePayload);
+    const addedThread = await addThreadUseCase.execute(useCasePayload, owner);
     return h.response ({
       status: 'success',
       data: {
@@ -26,16 +25,17 @@ class ThreadsHandler {
     }).code(201);
   }
 
-    async getThreadsByIdHandler({params}, h) {
+    async getThreadsByIdHandler(request, h) {
       const getThreadsUseCase = this._container.getInstance(GetThreadsUseCase.name);
-      const {threadId} = params;
-      const thread = await getThreadsUseCase.execute({threadId});
-        return h.respnse ({
+      const {threadId} = request.params;
+      const thread = await getThreadsUseCase.execute(threadId);
+      return h.response ({
             status: 'success',
             data: {
                 thread,
             },
         });
+        return response;
     }
 }
 
