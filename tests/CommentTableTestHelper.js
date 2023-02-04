@@ -14,8 +14,6 @@ const CommentTableTestHelper = {
             values: [id, content, owner, thread, date, is_deleted],
         };
 
-        console.log('ini adalah owner nya ' + owner);
-
         await pool.query(query);
     },
 

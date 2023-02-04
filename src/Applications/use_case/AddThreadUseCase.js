@@ -7,7 +7,6 @@ class AddThreadUseCase {
 
     async execute(useCasePayload, owner) {
         this._verifyOwnerId(owner);
-        console.log('AddThreadUseCase owner: ' + owner);
         const addThread = new AddThread(useCasePayload);
 
         return this._threadRepository.addThread(addThread, owner);
