@@ -7,7 +7,6 @@ class AddedThread{
         this.id = id;
         this.title = title;
         this.owner = owner;
-        this.threadId = threadId;
     }
 
     _verifyPayload(payload){

@@ -103,9 +103,11 @@ describe('ThreadRepositoryPostgres', () => {
 
       // Action
       const result = await threadRepositoryPostgres.getThreadById('thread-123');
+      expect(result.id).toEqual('thread-123');
       expect(result.title).toEqual('judul');
       expect(result.body).toEqual('body');
       expect(result.date).toEqual('date');
+      expect(result.username).toEqual('dicoding');
     });
   });
 });

@@ -38,5 +38,8 @@ describe('a GetComment entities', () => {
     
         // Assert
         expect(getComment.id).toEqual(payload.id);
+        expect(getComment.username).toEqual(payload.username);
+        expect(getComment.date).toEqual(payload.date);
+        expect(getComment.content).toEqual(payload.content);
     });
     });
