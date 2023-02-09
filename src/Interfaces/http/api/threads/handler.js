@@ -35,7 +35,6 @@ class ThreadsHandler {
                 thread,
             },
         });
-        return response;
     }
 }
 

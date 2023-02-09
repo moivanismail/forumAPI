@@ -44,15 +44,16 @@ describe('GetThreadUseCase', () => {
 
     // mock needed function
     mockThreadRepository.getThreadById = jest.fn(() => Promise.resolve(
-      new GetThread({
+      {
         id: 'thread-123',
         title: 'judul',
         body: 'body',
         date: 'date',
         username: 'Dicoding',
         comments: [],
-      }),
+      },
     ));
+
     mockCommentRepository.getCommentByThreadId = jest.fn(() => Promise.resolve([
       {
         id: 'comment1',
