@@ -7,7 +7,7 @@ const ThreadsTableHelper = {
         title = 'judul',
         body = 'body',
         owner = 'user-123',
-        created_at = 'date',
+        created_at = '',
     }) {
         const query = {
             text: 'INSERT INTO threads VALUES($1, $2, $3, $4, $5)',

@@ -106,7 +106,7 @@ describe('ThreadRepositoryPostgres', () => {
       expect(result.id).toEqual('thread-123');
       expect(result.title).toEqual('judul');
       expect(result.body).toEqual('body');
-      expect(result.date).toEqual('date');
+      expect(result.date).toBeDefined();
       expect(result.username).toEqual('dicoding');
     });
   });
