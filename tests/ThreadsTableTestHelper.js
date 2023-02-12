@@ -1,13 +1,13 @@
 /* istanbul ignore file */
 const pool = require('../src/Infrastructures/database/postgres/pool');
 
-const ThreadsTableHelper = {
+const ThreadsTableTestHelper = {
     async addThread({
         id = 'thread-123',
         title = 'judul',
         body = 'body',
         owner = 'user-123',
-        created_at = '', //dapat dikosongkan karena pada tabel sudah di set nilai default
+        created_at = '2023-02-12T05:16:47.539Z',
     }) {
         const query = {
             text: 'INSERT INTO threads VALUES($1, $2, $3, $4, $5)',
@@ -32,4 +32,4 @@ const ThreadsTableHelper = {
     },
 };
 
-module.exports = ThreadsTableHelper;
+module.exports = ThreadsTableTestHelper;

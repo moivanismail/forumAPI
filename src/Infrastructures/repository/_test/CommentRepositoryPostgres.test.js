@@ -127,6 +127,7 @@ describe('CommentRepositoryPostgres', () => {
             const expectedResult = {
                 id: 'comment-123',
                 owner: 'user-123',
+                username: 'dicoding',
                 content: 'ini comment',
                 threadId: 'thread-123',
             };
@@ -142,8 +143,8 @@ describe('CommentRepositoryPostgres', () => {
             expect(result[0].owner).toEqual(expectedResult.owner);
             expect(result[0].content).toEqual(expectedResult.content);
             expect(result[0].thread_id).toEqual(expectedResult.threadId);
-            expect(result[0].username).toBeDefined();
-            expect(result[0].date).toBeDefined();
+            expect(result[0].username).toEqual('dicoding');
+            expect(result[0].date).toEqual('date');
             expect(result[0].is_deleted).toBeDefined();
         });
     });

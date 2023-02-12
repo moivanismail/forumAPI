@@ -95,18 +95,15 @@ describe('ThreadRepositoryPostgres', () => {
     it('should return thread information when thread found', async () => {
       // Arrange
       const threadRepositoryPostgres = new ThreadRepositoryPostgres(pool, {});
-
-      await ThreadsTableTestHelper.addThread({
-        id: 'thread-123',
-        owner: 'user-123',
-      });
+      await ThreadsTableTestHelper.addThread({});
+      const date = "2023-02-12T05:16:47.539Z";
 
       // Action
       const result = await threadRepositoryPostgres.getThreadById('thread-123');
       expect(result.id).toEqual('thread-123');
       expect(result.title).toEqual('judul');
       expect(result.body).toEqual('body');
-      expect(result.date).toBeDefined();
+      expect(result.date).toEqual(date);
       expect(result.username).toEqual('dicoding');
     });
   });
