@@ -16,6 +16,7 @@ describe('GetThreadUseCase', () => {
     const comments = [
       {
         id: 'comment-123',
+        owner: 'user-123',
         username: 'user1',
         date: '2023-02-11T05:16:47.539Z',
         content: 'komentar',
@@ -23,6 +24,7 @@ describe('GetThreadUseCase', () => {
       },
       {
         id: 'comment-124',
+        owner: 'user-124',
         username: 'user2',
         date: '2023-02-10T05:16:47.539Z',
         content: 'komentar 2',
@@ -56,10 +58,8 @@ describe('GetThreadUseCase', () => {
     const mockCommentRepository = new CommentRepository();
 
     // mock needed function
-    mockThreadRepository.getThreadById = jest.fn()
-      .mockImplementation(() => Promise.resolve(thread));
-    mockCommentRepository.getCommentByThreadId = jest.fn()
-      .mockImplementation(() => Promise.resolve(comments));
+    mockThreadRepository.getThreadById = jest.fn().mockImplementation(() => Promise.resolve(thread));
+    mockCommentRepository.getCommentByThreadId = jest.fn().mockImplementation(() => Promise.resolve(comments));
 
      //  usecase instance
     const getThreadsUseCase = new GetThreadsUseCase({
@@ -72,9 +72,7 @@ describe('GetThreadUseCase', () => {
 
     // Assert
     expect(getThread).toEqual(expectedThread);
-    expect(mockThreadRepository.getThreadById)
-      .toHaveBeenCalledWith(threadId);
-    expect(mockCommentRepository.getCommentByThreadId)
-      .toHaveBeenCalledWith(threadId);
+    expect(mockThreadRepository.getThreadById).toHaveBeenCalledWith(threadId);
+    expect(mockCommentRepository.getCommentByThreadId).toHaveBeenCalledWith(threadId);
   });
 });
