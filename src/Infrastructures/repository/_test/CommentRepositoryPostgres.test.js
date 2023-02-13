@@ -130,6 +130,7 @@ describe('CommentRepositoryPostgres', () => {
                 username: 'dicoding',
                 content: 'ini comment',
                 threadId: 'thread-123',
+                is_deleted: false,
             };
 
             const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, {});
@@ -143,9 +144,9 @@ describe('CommentRepositoryPostgres', () => {
             expect(result[0].owner).toEqual(expectedResult.owner);
             expect(result[0].content).toEqual(expectedResult.content);
             expect(result[0].thread_id).toEqual(expectedResult.threadId);
-            expect(result[0].username).toEqual('dicoding');
-            expect(result[0].date).toEqual('date');
+            expect(result[0].username).toEqual(expectedResult.username);
             expect(result[0].is_deleted).toBeDefined();
+            expect(result[0]).toHaveProperty('date');
         });
     });
 });

@@ -20,13 +20,14 @@ exports.up = pgm => {
         type: 'VARCHAR(50)',
         notNull: true,
         },
-        date: {
-        type: 'TEXT',
-        notNull: true,
-        },
         is_deleted: {
         type: 'BOOLEAN',
         default: false,
+        },
+        date: {
+        type: 'timestamp',
+        notNull: true,
+        default: pgm.func('current_timestamp'),
         },
     },
     {
